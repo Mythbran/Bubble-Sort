@@ -1,0 +1,164 @@
+$(document).ready(function(){
+	
+document.body.onmousedown = function() { return false; } //so page is unselectable
+
+	//Canvas stuff
+	var canvas = $("#canvas")[0];
+	var ctx = canvas.getContext("2d");
+	var w = $("#canvas").width();
+	var h = $("#canvas").height();
+	var mx, my;
+	var fml = ([3,5,1,7,2,9,4,50,456,6548,321564321,4532,548,32,458,6,15,987,4563,12348]); 
+	
+	
+	
+	
+	
+	
+	/////////////////////////////////
+	////////////////////////////////
+	////////	GAME INIT
+	///////	Runs this code right away, as soon as the page loads.
+	//////	Use this code to get everything in order before your game starts 
+	//////////////////////////////
+	/////////////////////////////
+	function init()
+	{
+		
+		
+	//////////
+	///STATE VARIABLES
+	
+	//////////////////////
+	///GAME ENGINE START
+	//	This starts your game/program
+	//	"paint is the piece of code that runs over and over again
+	//	"60" sets how fast things should go
+	//	Once you choose a good speed for your program, you will never need to update this file ever again.
+
+	if(typeof game_loop != "undefined") clearInterval(game_loop);
+		game_loop = setInterval(paint, 60);
+	}
+
+	init();	
+	function bubblesort (sortThis){ 
+	var swapped
+	do{
+		 swapped = false;
+		 	for (var i=0; i < sortThis.length - 1; i++) {
+				if(sortThis[i] > sortThis [i+1]){
+					var temp = sortThis [i];
+					sortThis [i] = sortThis [i+1];	
+					sortThis [i+1] = temp;
+					swapped = true; 
+				}
+			}
+		}while (swapped == true) 
+		console.log (fml)
+	};
+
+	
+
+	
+	
+	
+	///////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////
+	////////	Main Game Engine
+	////////////////////////////////////////////////////
+	///////////////////////////////////////////////////
+	function paint()
+	{
+		
+		ctx.fillStyle = 'red';
+		ctx.fillRect(0,0, w, h);	
+		
+		ctx.fillStyle = 'white';
+		ctx.fillRect(200, 90, fml.length*19, fml.length);
+		
+		ctx.fillStyle = 'blue';
+		ctx.fillText(" " + fml, 200, 100);  
+
+		
+		
+	}////////////////////////////////////////////////////////////////////////////END PAINT/ GAME ENGINE
+	
+	function check ()
+	{
+	
+	
+	
+	
+	}
+	
+	
+	////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////
+	/////	MOUSE LISTENER 
+	//////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////
+	
+
+
+
+
+
+	/////////////////
+	// Mouse Click
+	///////////////
+	canvas.addEventListener('click', function (evt){
+	
+		
+	      
+	}, false);
+
+	
+	
+
+	canvas.addEventListener ('mouseout', function(){pause = true;}, false);
+	canvas.addEventListener ('mouseover', function(){pause = false;}, false);
+
+      	canvas.addEventListener('mousemove', function(evt) {
+        	var mousePos = getMousePos(canvas, evt);
+
+		mx = mousePos.x;
+		my = mousePos.y;
+
+      	}, false);
+
+
+	function getMousePos(canvas, evt) 
+	{
+	        var rect = canvas.getBoundingClientRect();
+        	return {
+          		x: evt.clientX - rect.left,
+          		y: evt.clientY - rect.top
+        		};
+      	}
+      
+
+	///////////////////////////////////
+	//////////////////////////////////
+	////////	KEY BOARD INPUT
+	////////////////////////////////
+
+
+	
+
+	window.addEventListener('keydown', function(evt){
+		var key = evt.keyCode;
+	if (evt.keyCode == 80){
+	bubblesort(fml);
+	}
+	//p 80
+	//r 82
+	//1 49
+	//2 50
+	//3 51
+		
+	}, false);
+
+
+
+
+})
